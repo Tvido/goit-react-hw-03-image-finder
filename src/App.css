@@ -2,13 +2,14 @@ body {
   margin: 0;
   padding: 50px;
 }
-#root {
+
+/* #root {
   margin: 0 auto;
   width: 400px;
   overflow: hidden;
   justify-content: center;
   align-items: center;
-}
+} */
 
 ul {
   list-style: none;
