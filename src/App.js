@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import Modal from './components/Modal';
+import ButtonTmp from './components/Button';
 
 import './App.css';
 
@@ -23,9 +24,11 @@ class App extends Component {
     const { showModal } = this.state;
     return (
       <>
-        <button type="button" onClick={this.toggleModal}>
+        {/* <button type="button" onClick={this.toggleModal}>
           Open
-        </button>
+        </button> */}
+
+        <ButtonTmp onClick={this.toggleModal}>Button</ButtonTmp>
 
         {showModal && (
           <Modal onClose={this.toggleModal}>

@@ -1,14 +1,9 @@
 import React from 'react';
 
-const buttonTmp = ({ children, onClick, ...allyProps }) => (
-  <buttton
-    type="buttton"
-    className="buttonTmp"
-    onClick={onClick}
-    {...allyProps}
-  >
+const ButtonTmp = ({ children, onClick, ...allyProps }) => (
+  <button type="button" className="buttonTmp" onClick={onClick} {...allyProps}>
     {children}
-  </buttton>
+  </button>
 );
 
-export default buttonTmp;
+export default ButtonTmp;
