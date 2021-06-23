@@ -4,7 +4,7 @@ import './ImageGalleryItem.css';
 
 const ImageGalleryItem = ({ id, webformatURL, onClick }) => (
   <li className="ImageGalleryItem" key={id} onClick={onClick}>
-    <img src={webformatURL} alt="" className="ImageGalleryItem-image" />
+    <img src={webformatURL} alt="" className="ImageGalleryItemImage" />
   </li>
 );
 

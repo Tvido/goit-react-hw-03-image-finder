@@ -7,11 +7,11 @@ import './ImageGallery.css';
 const ImageGallery = ({ images, onClick }) => (
   <>
     <ul className="ImageGallery">
-      {images.map(({ id, webformatURL, bigImageUrl }) => (
+      {images.map(({ id, webformatURL, bigImageUrl, onClick }) => (
         <ImageGalleryItem
           key={id}
           webformatURL={webformatURL}
-          onClick={() => onClick(bigImageUrl)}
+          onClick={() => this.onClick(bigImageUrl)}
         />
       ))}
     </ul>

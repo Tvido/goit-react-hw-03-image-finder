@@ -1,13 +1,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import imageApi from './services/image-api';
-// import axios from 'axios';
 
 import Button from './components/Button';
 import ImageGallery from './components/ImageGallery';
 import Modal from './components/Modal';
 import SearchBar from './components/Searchbar';
-// import Loader from './components/Loader';
 
 import './App.css';
 
@@ -30,25 +28,34 @@ class App extends Component {
     isLoading: false,
     error: null,
     showModal: false,
-    largeImageUrl: '',
+    largeImg: '',
     imageStatus: 'loading',
   };
 
-  toggleModal = largeImageURL => {
+  toggleModal = () => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
-      largeImg: largeImageURL,
     }));
+    this.setState({ largeImg: '' });
   };
 
   onImageClick = url => {
-    this.setState({ largeImageUrl: url });
+    // console.log(url);
+    this.setState({ largeImageURL: url });
     this.toggleModal();
     this.setState({ imageStatus: 'loading' });
   };
 
   onImageLoaded = () => {
     this.setState({ imageStatus: 'loaded' });
+  };
+
+  onOpenlargeImages = largeImageURL => {
+    console.log(largeImageURL);
+    this.setState({
+      largeImg: largeImageURL,
+      showModal: true,
+    });
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -99,8 +106,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, showModal, isLoading, largeImageUrl, imageStatus, error } =
-      this.state;
+    const { images, showModal, isLoading, error } = this.state;
     const shouldRenderLoadMoreBtn = images.length > 0 && !isLoading;
 
     return (
@@ -111,7 +117,7 @@ class App extends Component {
 
         {error && <h1>Something went wrong! Please, try again later</h1>}
 
-        <ImageGallery images={images} onClick={this.toggleModal} />
+        <ImageGallery images={images} onClick={this.onOpenlargeImages} />
 
         {shouldRenderLoadMoreBtn && (
           <Button type="button" onClick={this.fetchImages}>
@@ -119,14 +125,8 @@ class App extends Component {
           </Button>
         )}
 
-        {/* {showModal && (
-          <Modal onClose={this.toggleModal}>
-            {imageStatus === 'loading' && <h1>Loading...</h1>}
-            <img src={largeImageUrl} alt="" onLoad={this.onImageLoaded} />
-          </Modal>
-        )} */}
         {showModal && (
-          <Modal onClose={this.toggleModal} largeImg={largeImageUrl} />
+          <Modal onClose={this.toggleModal} src={this.state.largeImg} />
         )}
       </>
     );
