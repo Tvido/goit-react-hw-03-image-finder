@@ -7,6 +7,7 @@ import Button from './components/Button';
 import ImageGallery from './components/ImageGallery';
 import Modal from './components/Modal';
 import SearchBar from './components/Searchbar';
+// import Loader from './components/Loader';
 
 import './App.css';
 
@@ -85,7 +86,15 @@ class App extends Component {
         }));
       })
       .catch(error => this.setState({ error }))
-      .finally(() => this.setState({ isLoading: false }));
+      .finally(() => {
+        if (this.state.currentPage > 2) {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
+        }
+        return this.setState({ isLoading: false });
+      });
   };
 
   render() {
@@ -94,6 +103,8 @@ class App extends Component {
     return (
       <>
         <SearchBar onSubmit={this.onSearchQuery} />
+
+        {/* {isLoading && <h1>Loading...</h1>} */}
 
         {error && <h1>Something went wrong! Please, try again later</h1>}
 
