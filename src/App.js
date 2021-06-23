@@ -19,7 +19,7 @@ class App extends Component {
     isLoading: PropTypes.bool,
     error: PropTypes.object,
     showModal: PropTypes.bool,
-    bigImageUrl: PropTypes.string,
+    largeImageUrl: PropTypes.string,
     imageStatus: PropTypes.string,
   };
 
@@ -30,18 +30,19 @@ class App extends Component {
     isLoading: false,
     error: null,
     showModal: false,
-    bigImageUrl: '',
+    largeImageUrl: '',
     imageStatus: 'loading',
   };
 
-  toggleModal = () => {
+  toggleModal = largeImageURL => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
+      largeImg: largeImageURL,
     }));
   };
 
   onImageClick = url => {
-    this.setState({ bigImageUrl: url });
+    this.setState({ largeImageUrl: url });
     this.toggleModal();
     this.setState({ imageStatus: 'loading' });
   };
@@ -98,26 +99,34 @@ class App extends Component {
   };
 
   render() {
-    const { images, showModal, isLoading, bigImageUrl, error } = this.state;
+    const { images, showModal, isLoading, largeImageUrl, imageStatus, error } =
+      this.state;
+    const shouldRenderLoadMoreBtn = images.length > 0 && !isLoading;
 
     return (
       <>
         <SearchBar onSubmit={this.onSearchQuery} />
 
-        {/* {isLoading && <h1>Loading...</h1>} */}
+        {isLoading && <h1>Loading...</h1>}
 
         {error && <h1>Something went wrong! Please, try again later</h1>}
 
         <ImageGallery images={images} onClick={this.toggleModal} />
 
-        {images.length > 0 && !isLoading && (
-          <Button onClick={this.fetchImages}>Load more</Button>
+        {shouldRenderLoadMoreBtn && (
+          <Button type="button" onClick={this.fetchImages}>
+            Load more
+          </Button>
         )}
 
-        {showModal && (
+        {/* {showModal && (
           <Modal onClose={this.toggleModal}>
-            <img src={bigImageUrl} alt="" onLoad={this.onImageLoaded} />
+            {imageStatus === 'loading' && <h1>Loading...</h1>}
+            <img src={largeImageUrl} alt="" onLoad={this.onImageLoaded} />
           </Modal>
+        )} */}
+        {showModal && (
+          <Modal onClose={this.toggleModal} largeImg={largeImageUrl} />
         )}
       </>
     );

@@ -33,7 +33,7 @@ class Modal extends Component {
       <>
         <div className="Overlay" onClick={this.handleOverlayClick}>
           <div className="Modal">
-            <img src={src} alt={alt} />
+            <img src={this.props.largeImg} alt="" />
           </div>
         </div>
       </>,
