@@ -1,9 +1,13 @@
 import React from 'react';
 
+import './Button.css';
+
 const ButtonTmp = ({ children, onClick, ...allyProps }) => (
-  <button type="button" className="buttonTmp" onClick={onClick} {...allyProps}>
-    {children}
-  </button>
+  <div className="ButtonTmp">
+    <button type="button" className="Button" onClick={onClick} {...allyProps}>
+      {children}
+    </button>
+  </div>
 );
 
 export default ButtonTmp;
