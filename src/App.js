@@ -105,7 +105,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, showModal, isLoading, error, largeImg } = this.state;
+    const { images, showModal, isLoading, error } = this.state;
     const shouldRenderLoadMoreBtn = images.length > 0 && !isLoading;
 
     return (
@@ -133,7 +133,9 @@ class App extends Component {
           </Modal>
         )} */}
 
-        {showModal && <Modal onClose={this.toggleModal} largeImg={largeImg} />}
+        {showModal && (
+          <Modal onClose={this.toggleModal} largeImg={this.state.largeImg} />
+        )}
       </>
     );
   }
