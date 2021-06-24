@@ -21,7 +21,9 @@ const ImageGallery = ({ images, onOpenLargeImages }) => (
 ImageGallery.propTypes = {
   images: PropTypes.array,
   onOpenLargeImages: PropTypes.func,
-  children: PropTypes.node,
+  onClick: PropTypes.func,
+
+  // children: PropTypes.node,
   // largeImageURL: PropTypes.func,
 };
 
