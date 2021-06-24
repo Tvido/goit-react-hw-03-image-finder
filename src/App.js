@@ -127,13 +127,13 @@ class App extends Component {
           </Button>
         )}
 
-        {showModal && (
+        {/* {showModal && (
           <Modal onClose={this.toggleModal}>
             <img largeImg={largeImg} alt="" onLoad={this.onImageLoaded} />
           </Modal>
-        )}
+        )} */}
 
-        {/* {showModal && <Modal onClose={this.toggleModal} largeImg={largeImg} />} */}
+        {showModal && <Modal onClose={this.toggleModal} largeImg={largeImg} />}
       </>
     );
   }
