@@ -4,14 +4,14 @@ import ImageGalleryItem from '../ImageGalleryItem';
 
 import './ImageGallery.css';
 
-const ImageGallery = ({ images, onClick }) => (
+const ImageGallery = ({ images, onOpenLargeImages }) => (
   <>
     <ul className="ImageGallery">
-      {images.map(({ id, webformatURL, bigImageUrl, onClick }) => (
+      {images.map(({ id, webformatURL, largeImageUrl, onClick }) => (
         <ImageGalleryItem
           key={id}
           webformatURL={webformatURL}
-          onClick={() => this.onClick(bigImageUrl)}
+          onClick={() => onOpenLargeImages(largeImageUrl)}
         />
       ))}
     </ul>

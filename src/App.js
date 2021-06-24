@@ -117,16 +117,19 @@ class App extends Component {
 
         {error && <h1>Something went wrong! Please, try again later</h1>}
 
-        <ImageGallery images={images} onClick={this.onOpenlargeImages} />
+        <ImageGallery
+          images={images}
+          onOpenLargeImages={this.onOpenLargeImages}
+        />
 
         {shouldRenderLoadMoreBtn && (
-          <Button type="button" onClick={this.fetchImages}>
+          <Button type="button" onClick={this.toggleModal}>
             Load more
           </Button>
         )}
 
         {showModal && (
-          <Modal onClose={this.toggleModal} src={this.state.largeImg} />
+          <Modal onClose={this.toggleModal} largeImg={this.state.largeImg} />
         )}
       </>
     );
