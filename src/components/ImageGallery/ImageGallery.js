@@ -22,9 +22,6 @@ ImageGallery.propTypes = {
   images: PropTypes.array,
   onOpenLargeImages: PropTypes.func,
   onClick: PropTypes.func,
-
-  // children: PropTypes.node,
-  // largeImageURL: PropTypes.func,
 };
 
 export default ImageGallery;
