@@ -40,7 +40,6 @@ class App extends Component {
   };
 
   onImageClick = url => {
-    // console.log(url);
     this.setState({ largeImageURL: url });
     this.toggleModal();
     this.setState({ imageStatus: 'loading' });
@@ -106,7 +105,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, showModal, isLoading, error } = this.state;
+    const { images, showModal, isLoading, error, largeImg } = this.state;
     const shouldRenderLoadMoreBtn = images.length > 0 && !isLoading;
 
     return (
@@ -123,14 +122,12 @@ class App extends Component {
         />
 
         {shouldRenderLoadMoreBtn && (
-          <Button type="button" onClick={this.toggleModal}>
+          <Button type="button" onClick={this.fetchImages}>
             Load more
           </Button>
         )}
 
-        {showModal && (
-          <Modal onClose={this.toggleModal} largeImg={this.state.largeImg} />
-        )}
+        {showModal && <Modal onClose={this.toggleModal} largeImg={largeImg} />}
       </>
     );
   }
