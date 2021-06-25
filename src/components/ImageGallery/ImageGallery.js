@@ -11,7 +11,9 @@ const ImageGallery = ({ images, onOpenLargeImages }) => (
         <ImageGalleryItem
           key={id}
           webformatURL={webformatURL}
-          onClick={() => onOpenLargeImages(largeImageURL)}
+          onOpenLargeImages={onOpenLargeImages}
+          largeImageURL={largeImageURL}
+          // onClick={() => onOpenLargeImages(largeImageURL)}
         />
       ))}
     </ul>

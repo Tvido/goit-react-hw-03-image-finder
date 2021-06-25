@@ -2,13 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ImageGalleryItem.css';
 
-const ImageGalleryItem = ({ id, webformatURL, largeImageURL, onClick }) => (
+const ImageGalleryItem = ({
+  id,
+  webformatURL,
+  largeImageURL,
+  onOpenLargeImages,
+}) => (
   <li className="ImageGalleryItem" key={id}>
     <img
       src={webformatURL}
       alt=""
       className="ImageGalleryItemImage"
-      onClick={largeImageURL}
+      onClick={() => onOpenLargeImages(largeImageURL)}
     />
   </li>
 );

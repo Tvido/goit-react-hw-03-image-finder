@@ -49,7 +49,7 @@ class App extends Component {
     this.setState({ imageStatus: 'loaded' });
   };
 
-  onOpenlargeImages = largeImageURL => {
+  onOpenLargeImages = largeImageURL => {
     console.log(largeImageURL);
     this.setState({
       largeImg: largeImageURL,
